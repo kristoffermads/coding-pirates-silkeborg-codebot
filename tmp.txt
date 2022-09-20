@@ -1,0 +1,7 @@
+
+/*
+
+https://discord.com/api/oauth2/authorize?client_id=1014274545718407202&permissions=380104608832&scope=bot
+https://discord.com/api/oauth2/authorize?client_id=1014274545718407202&permissions=0&scope=bot%20applications.commands
+
+*/
