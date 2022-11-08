@@ -1,4 +1,3 @@
-import { CacheType, ChatInputCommandInteraction } from "discord.js";
 const dotenv = require('dotenv');
 dotenv.config();
 const { Client, GatewayIntentBits } = require('discord.js');
@@ -8,15 +7,15 @@ const { Client, GatewayIntentBits } = require('discord.js');
  * Code library
  */
 class Coder {
-	private offset = 0;
-	private alphabet = "abcdefghijklmnopqrtsuvwxyzæøå";
+	offset = 0;
+	alphabet = "abcdefghijklmnopqrtsuvwxyzæøå";
 
-	constructor(offset:any) {
+	constructor(offset) {
 			this.offset = offset;
 	}
-	encrypt(input:any) {    
+	encrypt(input) {    
 			var encodedString = "";
-			for (var i:any=0; i < input.length; i++) {
+			for (var i=0; i < input.length; i++) {
 					var char = input[i];
 					var isUpper = char === char.toUpperCase() ? true : false;
 	
@@ -36,10 +35,10 @@ class Coder {
 			}
 			return encodedString
 	}
-	decrypt(input:any) {
+	decrypt(input) {
 			var decodedString = "";
 			var offset = 4;
-			for (var i:any=0; i < input.length; i++) {
+			for (var i=0; i < input.length; i++) {
 					var char = input[i];
 					var isUpper = char === char.toUpperCase() ? true : false;
 	
