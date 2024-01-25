@@ -22,11 +22,15 @@ const commands =
 
 		new SlashCommandBuilder()
 					.setName('encode')
-					.setDescription('Encode a message')
-					.addStringOption(option => option
+						.setDescription('Encode a message')
+						.addStringOption(option => option
 																			.setName('input')
 																			.setDescription("The input to be encoded")
-					).addIntegerOption(option => option.setName('ciffer').setDescription('The ciffer to decode')),
+						).addIntegerOption(option => option.setName('ciffer').setDescription('The ciffer to decode')),
+
+		new SlashCommandBuilder()
+						.setName('test')
+						.setDescription('Test en besked'),
 	]
 	.map(command => command.toJSON());
 

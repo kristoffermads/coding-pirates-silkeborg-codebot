@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const { Client, GatewayIntentBits } = require('discord.js');
+
+const { Client, GatewayIntentBits, ClientEvents, EmbedBuilder, ClientUser, DiscordAPIError, Intents, GatewayDispatchEvents } = require('discord.js');
 
 
 /**
@@ -63,15 +64,30 @@ class Coder {
 
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ 
+	intents: [
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.Guilds, 
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMessageReactions,
+		GatewayIntentBits.GuildMessageTyping,
+		GatewayIntentBits.GuildVoiceStates,
+		
+	] 
+}
+);
 
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
 	console.log('CodingPirates Code-Bot is ready! Raarrwww!');
+
 });
+
 
 client.on('interactionCreate', async (interaction) => 
 {
+	console.log(interaction);
 	if (!interaction.isChatInputCommand()) return;
 	if (!interaction.guild)return;
 	const { commandName } = interaction;
@@ -95,6 +111,20 @@ client.on('interactionCreate', async (interaction) =>
 		let decode = coder.decrypt(text);
 		await interaction.reply({ content: decode, ephemeral: true });
 	}
+	else if (commandName === 'test') 
+	{
+		await interaction.channel.send("Hello from the discord bot !");
+	}
+});
+
+
+client.on('message', message => {
+	console.log(message);
+});
+
+
+client.on('guildIntegrationsUpdate', (guild) => {
+	console.log(guild);
 });
 
 client.login(process.env.token);
